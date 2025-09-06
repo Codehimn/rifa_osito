@@ -1,478 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¡Súper Rifa del Oso!</title>
-  <meta name="description"
-    content="Rifa organizada por Yurany y Majo. Juega el 5 de septiembre con las 2 últimas cifras de la Lotería de Medellín. Publicaremos aquí el número ganador durante una semana." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ganador: 99</title>
+  <meta name="description" content="Resultado oficial — Número ganador: 99" />
   <style>
-    /* =====================
-       Variables de tema
-       ===================== */
-    :root {
-      /* --- LIGHT --- */
-      --bg: #fff7f7;
-      /* page background */
-      --bg2: #ffffff;
-      /* secondary background */
-      --ink: #25314a;
-      /* main text */
-      --muted: #6b7280;
-      /* muted text */
-      --brand: #ff4b6e;
-      /* pink */
-      --brand2: #7c3aed;
-      /* violet */
-      --ok: #16a34a;
-      /* green */
-      --card: #ffffff;
-      /* card surface */
-      --bd: #e9edf2;
-      /* borders */
-      --pick: #ffe7ee;
-      /* picked bg */
-      --pickbd: #ffc9d7;
-      /* picked border */
-      --soldbg: #f7f8fb;
-      /* sold cell bg */
+    :root{
+      --bg1:#0b1020; --bg2:#1b0f2a; --bg3:#2a1530;
+      --glow:#ffb4c8; --accent:#ff4b6e; --accent2:#7c3aed;
+      --ink:#eef2ff; --muted:#a7b0c3; --ring:#ffd166;
     }
-
-    :root[data-theme="dark"] {
-      /* --- DARK --- */
-      --bg: #0b1020;
-      --bg2: #0f172a;
-      --ink: #e5e7eb;
-      --muted: #94a3b8;
-      --brand: #ff4b6e;
-      --brand2: #7c3aed;
-      --ok: #16a34a;
-      --card: #121a2f;
-      --bd: #23314f;
-      --pick: #2a1530;
-      --pickbd: #ff7590;
-      --soldbg: #0b1222;
-    }
-
-    * {
-      box-sizing: border-box
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--ink);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       background:
-        radial-gradient(1200px 700px at -10% -20%, rgba(255, 75, 110, .10) 0%, transparent 60%),
-        radial-gradient(900px 600px at 110% 10%, rgba(124, 58, 237, .10) 0%, transparent 60%),
-        var(--bg)
+        radial-gradient(1200px 700px at -10% -20%, rgba(255,75,110,.12) 0%, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, rgba(124,58,237,.12) 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+      display:grid; place-items:center; overflow:hidden;
     }
 
-    header {
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      color: #fff
+    /* Card */
+    .card{
+      position:relative;
+      width:min(780px,92vw);
+      padding:clamp(22px,5vw,40px);
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(6,10,26,.55);
+      backdrop-filter: blur(10px);
+      box-shadow:
+        0 20px 60px rgba(2,6,23,.45),
+        inset 0 0 0 1px rgba(255,255,255,.06);
+      text-align:center;
+      isolation:isolate;
     }
 
-    .wrap {
-      max-width: 980px;
-      margin: auto;
-      padding: 18px
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+      font-weight:800; letter-spacing:.3px; color:#fff;
+      box-shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+    .badge .dot{
+      width:10px; height:10px; border-radius:50%;
+      background:conic-gradient(from 0deg, var(--accent), var(--accent2));
+      box-shadow:0 0 12px var(--glow);
     }
 
-    .title {
-      font-weight: 900;
-      font-size: clamp(26px, 5vw, 40px);
-      letter-spacing: .3px
+    .title{
+      margin:18px 0 12px;
+      font-size:clamp(22px,3.6vw,34px);
+      font-weight:900; letter-spacing:.2px;
+      text-shadow:0 2px 14px rgba(255,180,200,.25);
     }
 
-    .sub {
-      opacity: .95
+    /* Winner number */
+    .number{
+      margin:10px auto 6px;
+      display:inline-grid; place-items:center;
+      width:min(520px, 78vw); aspect-ratio:3.2/1;
+      border-radius:24px;
+      background:
+        radial-gradient(120% 140% at 80% 0%, rgba(255,255,255,.20) 0%, rgba(255,255,255,0) 55%),
+        linear-gradient(135deg, rgba(255,75,110,.22), rgba(124,58,237,.22));
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:
+        inset 0 0 40px rgba(255,255,255,.07),
+        0 22px 60px rgba(124,58,237,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .number::after{
+      /* ring glow */
+      content:"";
+      position:absolute; inset:-12px;
+      border-radius:30px;
+      box-shadow:0 0 0 4px rgba(255,209,102,.22), 0 0 60px 12px rgba(255,209,102,.16) inset;
+      pointer-events:none;
+    }
+    .digits{
+      font-variant-numeric:tabular-nums lining-nums;
+      font-size:clamp(64px,15vw,160px);
+      font-weight:1000;
+      letter-spacing:.06em;
+      line-height:1;
+      background:linear-gradient(180deg,#fff, #f6f7fb 45%, #ffd166 46%, #fff 70%);
+      -webkit-background-clip:text; background-clip:text;
+      color:transparent;
+      text-shadow:
+        0 2px 0 rgba(0,0,0,.15),
+        0 18px 40px rgba(255,209,102,.25);
+      filter: drop-shadow(0 14px 28px rgba(255,109,120,.25));
     }
 
-    .hero {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 18px auto
+    .subtitle{
+      margin:6px 0 0; color:var(--muted); font-size:clamp(14px,2.6vw,16px);
     }
 
-    .hero img {
-      width: calc(50% - 6px);
-      max-width: 180px;
-      height: auto;
-      border-radius: 16px;
-      border: 1px solid var(--bd);
-      box-shadow: 0 8px 22px rgba(2, 6, 23, .15)
+    /* Decorations */
+    .emoji{
+      position:absolute; font-size:clamp(20px,4.5vw,32px); opacity:.92;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,.25));
+    }
+    .e1{ top:-10px; left:12px }    /* 🏆 */
+    .e2{ top:-14px; right:18px }   /* 🐻 */
+    .e3{ bottom:-8px; left:22px }  /* 🎉 */
+    .e4{ bottom:-10px; right:28px }/* ✨ */
+
+    /* Confetti canvas */
+    canvas#confetti{
+      position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:-1;
     }
 
-    @media (min-width:600px) {
-      .hero img {
-        width: 180px
-      }
+    @media (prefers-reduced-motion:no-preference){
+      .number{ animation: float 4.5s ease-in-out infinite }
+    }
+    @keyframes float{
+      0%,100%{ transform: translateY(0) }
+      50%{ transform: translateY(-6px) }
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--bd);
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(2, 6, 23, .20);
-      padding: 16px
-    }
-
-    .legend {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 4px
-    }
-
-    .board {
-      --cols: 10;
-      display: grid;
-      grid-template-columns: repeat(var(--cols), 1fr);
-      gap: 6px;
-      max-width: 540px;
-      margin: 14px auto
-    }
-
-    .cell {
-      position: relative;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--bd);
-      border-radius: 10px;
-      background: var(--bg2);
-      color: var(--ink);
-      font-weight: 800;
-      font-size: clamp(11px, 3.2vw, 16px);
-      cursor: pointer;
-      transition: transform .1s, box-shadow .1s, background .15s, border-color .15s
-    }
-
-    .cell:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(2, 6, 23, .15)
-    }
-
-    .cell.sold {
-      cursor: not-allowed;
-      color: #7b8696;
-      background: var(--soldbg)
-    }
-
-    .cell.sold::after {
-      content: "🐻";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      opacity: .9
-    }
-
-    .cell.picked {
-      background: var(--pick);
-      border-color: var(--pickbd)
-    }
-
-    .chosen {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin: 8px 0
-    }
-
-    .chip {
-      background: var(--bg2);
-      border: 1px solid var(--pickbd);
-      color: #b4234d;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 800
-    }
-
-    .cta {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 10px 0
-    }
-
-    .btn {
-      border: none;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 900;
-      cursor: pointer
-    }
-
-    .btn.whats {
-      background: linear-gradient(90deg, #22c55e, var(--ok));
-      color: #fff
-    }
-
-    .btn.clear {
-      background: transparent;
-      border: 1px solid var(--bd);
-      color: var(--ink)
-    }
-
-    .btn.random {
-      background: linear-gradient(90deg, #38bdf8, #6366f1);
-      color: #0b1020
-    }
-
-    .btn.theme {
-      background: #fff0;
-      border: 1px solid rgba(255, 255, 255, .5);
-      color: #fff
-    }
-
-    .note {
-      color: var(--muted)
-    }
-
-    footer {
-      padding: 18px 12px;
-      text-align: center;
-      color: var(--muted)
-    }
-
-    /* Toast / announcer */
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 20px;
-      transform: translateX(-50%);
-      background: var(--soldbg);
-      border: 1px solid var(--bd);
-      color: var(--ink);
-      padding: 10px 14px;
-      border-radius: 12px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s, transform .2s
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-4px)
-    }
-
-    /* Theme toggle container */
-    .header-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: flex-end
-    }
-
-    .toggle {
-      appearance: none;
-      width: 52px;
-      height: 30px;
-      border: 1px solid var(--bd);
-      border-radius: 999px;
-      background: var(--bg2);
-      position: relative;
-      cursor: pointer;
-      outline: none
-    }
-
-    .toggle:before {
-      content: "";
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #fff, #eee);
-      transition: left .2s
-    }
-
-    html[data-theme="dark"] .toggle:before {
-      left: 25px
+    /* Print: show just the essentials */
+    @media print{
+      body{ background:#fff; color:#000 }
+      .card{ box-shadow:none; background:#fff; border:none }
+      .subtitle, .emoji, #confetti{ display:none !important }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="wrap">
-      <div style="display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap">
-        <div>
-          <div class="title">¡Súper Rifa del Oso!</div>
-          <div class="sub">Organizada por <b>Yurany y Majo</b>. Juega el <b>5 de septiembre</b> con las <b>2 últimas
-              cifras</b> de la Lotería de Medellín. Publicaremos aquí el número ganador por una semana.</div>
-        </div>
-        <div class="header-actions">
-          <label style="font-size:12px;opacity:.9">Claro</label>
-          <input id="themeToggle" class="toggle" type="checkbox" aria-label="Cambiar entre modo claro y oscuro">
-          <label style="font-size:12px;opacity:.9">Oscuro</label>
-        </div>
-      </div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <main class="card" role="main" aria-label="Resultado oficial">
+    <div class="badge" aria-hidden="true">
+      <span class="dot"></span> Resultado oficial
     </div>
-  </header>
 
-  <main class="wrap">
-    <section class="card">
-      <div class="hero">
-        <img src="rifa_oso.jpg" alt="Oso en rifa (JPG)" />
-        <img src="rifa_oso.png" alt="Oso en rifa (PNG)" />
-      </div>
+    <h1 class="title">Número ganador</h1>
 
-      <div class="legend"><span>⬜ Disponible</span><span>🐻 Vendido</span><span>💖 Seleccionado</span></div>
-
-      <ol
-        style="max-width:560px;margin:10px auto 0;padding-left:18px;text-align:left;color:var(--muted);font-size:14px;line-height:1.45">
-        <li>Toca los números <b>disponibles</b> para seleccionarlos (se ponen en rosado 💖).</li>
-        <li>Revisa tu selección justo debajo del tablero.</li>
-        <li>Pulsa <b>“Apartar por WhatsApp”</b> y enviaremos esos números en el mensaje.</li>
-      </ol>
-
-      <div id="board" class="board" role="grid" aria-label="Cuadrícula de la rifa (00 a 99)"></div>
-
-      <div class="chosen" id="chosen"></div>
-      <div class="cta">
-        <button id="btnRandom" class="btn random" title="Que la suerte decida">🎲 Sácame un numerito bacano</button>
-        <button id="btnClear" class="btn clear" title="Quitar selección">Limpiar selección</button>
-        <button id="btnWhats" class="btn whats">📲 Apartar por WhatsApp</button>
-      </div>
-
-      <p class="note" style="text-align:center">Publicaremos aquí el <b>número ganador</b> durante una semana después
-        del sorteo.</p>
-      <div id="winning" hidden></div>
+    <section class="number" aria-labelledby="ganador">
+      <div id="ganador" class="digits" aria-label="noventa y nueve">99</div>
+      <div class="emoji e1">🏆</div>
+      <div class="emoji e2">🐻</div>
+      <div class="emoji e3">🎉</div>
+      <div class="emoji e4">✨</div>
     </section>
+
+    <p class="subtitle">¡Felicitaciones! Gracias por participar 💖</p>
   </main>
 
-  <footer>
-    <small>Organizan: <b>Yurany y Majo</b>. Reglas: gana quien coincida con las 2 últimas cifras del premio mayor de la
-      Lotería de Medellín del 5 de septiembre.</small>
-  </footer>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
   <script>
-    const WHATS_NUMBER = "573234219862";
-    const SHEET_ID = "1GxjtQxIKo0Z4YMQr09dNTQRIXET-iCT-IlEldU6cXsw";
-    let disponibles = [];
+    // Pequeño confetti sin librerías
+    (function () {
+      const c = document.getElementById('confetti');
+      const ctx = c.getContext('2d');
+      let W, H, pieces = [], running = true;
 
-    async function cargarDisponibles() {
-      try {
-        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&tq=select%20*`;
-        const res = await fetch(url, { cache: "no-store" });
-        const txt = await res.text();
-        const json = JSON.parse(txt.substring(47, txt.length - 2)); // quita el wrapper de gviz
-        const rows = json.table.rows;
-
-        // Tomamos la PRIMERA columna como la lista de números disponibles
-        disponibles = rows
-          .map(r => r.c?.[0]?.v)                       // primera columna
-          .filter(v => v !== null && v !== undefined && v !== "" && v !== "numero")
-          .map(v => String(v).padStart(2, "0"));        // asegura 2 dígitos (00..99)
-      } catch (e) {
-        console.error("No se pudo cargar el Sheet:", e);
-        disponibles = []; // si falla, marcamos todo como vendido
+      function resize(){
+        W = c.width = window.innerWidth; H = c.height = window.innerHeight;
       }
-      render(); // pinta el tablero cuando ya tenemos `disponibles`
-    }
+      window.addEventListener('resize', resize, { passive:true }); resize();
 
-    cargarDisponibles();
+      const colors = ["#ffd166","#ff4b6e","#7c3aed","#38bdf8","#22c55e","#f472b6"];
+      const N = Math.min(180, Math.floor(W * H / 16000));
 
-    // ======= Tema (light/dark) =======
-    const root = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'dark') { root.setAttribute('data-theme', 'dark'); themeToggle.checked = true; }
-    else { root.removeAttribute('data-theme'); themeToggle.checked = false; }
-    themeToggle.addEventListener('change', () => {
-      if (themeToggle.checked) { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
-      else { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
-    });
-
-    const board = document.getElementById('board');
-    const chosenBox = document.getElementById('chosen');
-    const picked = new Set();
-
-    const numbers = Array.from({ length: 100 }, (_, i) => String(i).padStart(2, '0'));
-
-    function toast(msg) {
-      const el = document.getElementById('toast');
-      el.innerHTML = msg;
-      el.classList.add('show');
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
-    }
-
-    function paintChosen() {
-      chosenBox.innerHTML = '';
-      if (picked.size === 0) { chosenBox.innerHTML = '<span style="color:var(--muted)">Sin selección</span>'; return; }
-      [...picked].sort().forEach(n => {
-        const s = document.createElement('span'); s.className = 'chip'; s.textContent = n; chosenBox.appendChild(s);
-      });
-    }
-
-    function render() {
-      board.innerHTML = '';
-      numbers.forEach(n => {
-        const sold = !disponibles.includes(n);
-        const cell = document.createElement('button');
-        cell.type = 'button';
-        cell.className = 'cell' + (sold ? ' sold' : '') + (picked.has(n) ? ' picked' : '');
-        cell.textContent = n;
-        cell.disabled = sold;
-        cell.id = `cell-${n}`;
-        cell.onclick = () => {
-          if (sold) return;
-          if (picked.has(n)) picked.delete(n); else picked.add(n);
-          cell.classList.toggle('picked');
-          paintChosen();
+      function makePiece(){
+        return {
+          x: Math.random() * W,
+          y: -10 - Math.random() * H,
+          r: 2 + Math.random() * 4,
+          vx: -1 + Math.random()*2,
+          vy: 2 + Math.random()*3,
+          rot: Math.random()*360,
+          vr: -4 + Math.random()*8,
+          color: colors[(Math.random()*colors.length)|0],
+          shape: Math.random() > .5 ? 'rect' : 'circ',
         };
-        board.appendChild(cell);
-      });
-      paintChosen();
-    }
+      }
+      for (let i=0;i<N;i++) pieces.push(makePiece());
 
-    // Random picker (tono colombiano)
-    document.getElementById('btnRandom').onclick = () => {
-      const pool = disponibles.filter(n => !picked.has(n));
-      if (pool.length === 0) { toast('⚠️ Ya elegiste todos los disponibles.'); return; }
-      const n = pool[Math.floor(Math.random() * pool.length)];
-      picked.add(n);
-      const el = document.getElementById(`cell-${n}`);
-      if (el) { el.classList.add('picked'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-      paintChosen();
-      toast(`Te salió un <b>numerito bacano</b>: <b>${n}</b> — ¡apártalo de una!`);
-    };
+      function step(){
+        if(!running) return;
+        ctx.clearRect(0,0,W,H);
+        for (const p of pieces){
+          p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+          if (p.y > H + 12) { p.y = -12; p.x = Math.random()*W; }
 
-    document.getElementById('btnClear').onclick = () => { picked.clear(); render(); };
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI/180);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect'){
+            ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.2);
+          } else {
+            ctx.beginPath(); ctx.arc(0,0,p.r,0,Math.PI*2); ctx.fill();
+          }
+          ctx.restore();
+        }
+        requestAnimationFrame(step);
+      }
+      // Respeta accesibilidad
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) step();
+      document.addEventListener('visibilitychange', () => { running = !document.hidden; if(running) step(); });
 
-    document.getElementById('btnWhats').onclick = () => {
-      const arr = [...picked].sort();
-      const msg = arr.length
-        ? `Hola 👋, quiero participar en la *Súper Rifa del Oso* organizada por Yurany y Majo. Deseo apartar los números: ${arr.join(', ')}. ¿Me confirmas por favor?`
-        : `Hola 👋, quiero participar en la *Súper Rifa del Oso* organizada por Yurany y Majo. ¿Cuáles números tienes disponibles? Quiero elegir y apartar.`;
-      const url = `https://api.whatsapp.com/send?phone=${WHATS_NUMBER}&text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-    };
-
-    const ganador = new URLSearchParams(location.hash.slice(1)).get('ganador');
-    if (ganador) {
-      const win = document.getElementById('winning');
-      win.hidden = false; win.textContent = `Número ganador: ${String(ganador).padStart(2, '0')}. Visible durante una semana.`;
-    }
-
-    render();
+      // Pequeño pulso al cargar
+      const digits = document.querySelector('.digits');
+      digits.animate([{transform:'scale(0.96)'},{transform:'scale(1)'}], {duration:420, easing:'ease-out'});
+    })();
   </script>
 </body>
-
 </html>
